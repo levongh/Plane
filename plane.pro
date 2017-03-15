@@ -8,7 +8,8 @@ SOURCES += main.cpp \
     antenna.cpp \
     plane.cpp \
     MainWindow.cpp \
-    graphicsScene.cpp
+    threedimentionalscene.cpp \
+    twodimentionalscene.cpp
 
 
 
@@ -16,7 +17,8 @@ HEADERS += \
     antenna.h \
     plane.h \
     MainWindow.h \
-    graphicsScene.h
+    threedimentionalscene.h \
+    twodimentionalscene.h
 
 RESOURCES += \
     resource.qrc

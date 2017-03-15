@@ -3,12 +3,12 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QTransform>
 
-#include "graphicsScene.h"
+#include "twodimentionalscene.h"
 #include "antenna.h"
 #include "plane.h"
 
 
-graphicsScene::graphicsScene(QObject* parent)
+TwoDimentionalScene::TwoDimentionalScene(QObject* parent)
     : QGraphicsScene(parent)
     , m_circle(nullptr)
     , m_plane(nullptr)
@@ -29,17 +29,17 @@ graphicsScene::graphicsScene(QObject* parent)
     addItem(m_plane);
 }
 
-void graphicsScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void TwoDimentionalScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     QGraphicsScene::mousePressEvent(event);
 }
 
-void graphicsScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void TwoDimentionalScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     QGraphicsScene::mouseReleaseEvent(event);
 }
 
-void graphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void TwoDimentionalScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if (Antenna* obj = dynamic_cast<Antenna*>(itemAt(event->scenePos(), QTransform()))) {
         obj->set2DPos(event->scenePos());
@@ -52,7 +52,7 @@ void graphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsScene::mouseMoveEvent(event);
 }
 
-void graphicsScene::wheelEvent(QGraphicsSceneWheelEvent *event)
+void TwoDimentionalScene::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
     if (Qt::ControlModifier == event->modifiers() && event->orientation() == Qt::Vertical) {
         emit zoomChanged(event->delta());
@@ -61,14 +61,12 @@ void graphicsScene::wheelEvent(QGraphicsSceneWheelEvent *event)
     QGraphicsScene::wheelEvent(event);
 }
 
-#include <QDebug>
-
-void graphicsScene::startPlaying()
+void TwoDimentionalScene::startPlaying()
 {
     m_timer->start(500);
 }
 
-void graphicsScene::updateCirclePos()
+void TwoDimentionalScene::updateCirclePos()
 {
     qreal current_radius = m_step;
     if (m_circle != nullptr) {
@@ -88,7 +86,7 @@ void graphicsScene::updateCirclePos()
     }
 }
 
-bool graphicsScene::all_in(qreal radius)
+bool TwoDimentionalScene::all_in(qreal radius)
 {
     for (const auto it : m_antenasVector) {
         qreal dx = std::abs(it->get2DPos().x() - m_plane->get2DPos().x());
@@ -101,7 +99,7 @@ bool graphicsScene::all_in(qreal radius)
     return true;
 }
 
-graphicsScene::~graphicsScene()
+TwoDimentionalScene::~TwoDimentionalScene()
 {
 
 }

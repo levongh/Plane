@@ -25,7 +25,6 @@ void Antenna::set2DPos(QPointF pos)
 QPointF Antenna::get2DPos()const
 {
     return scenePos();
-  //  return QPointF(_x, _y);
 }
 QRectF Antenna::boundingRect() const
 {

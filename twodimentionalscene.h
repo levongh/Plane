@@ -7,12 +7,12 @@ class QTimer;
 class Antenna;
 class Plane;
 
-class graphicsScene : public QGraphicsScene
+class TwoDimentionalScene : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    graphicsScene(QObject* parent = nullptr);
-    virtual ~graphicsScene();
+    TwoDimentionalScene(QObject* parent = nullptr);
+    virtual ~TwoDimentionalScene();
 
 public slots:
     void startPlaying();

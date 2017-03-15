@@ -16,7 +16,8 @@ class QWidget;
 class QLineEdit;
 class QLabel;
 class QGridLayout;
-class graphicsScene;
+class TwoDimentionalScene;
+class ThreeDiemtionalScene;
 class QGraphicsView;
 
 class Antenna;
@@ -82,7 +83,7 @@ private:
 
     //@brief main window mebers
 private:
-    graphicsScene *m_scene;
+    TwoDimentionalScene *m_scene;
     QDockWidget *m_rightDock;
     QTabWidget *m_rightDockTabWidget;
     QWidget *m_settingsWidget;
@@ -90,7 +91,7 @@ private:
 private:
     QGraphicsView* m_2dView;
     QVBoxLayout* m_mainLayout;
-    graphicsScene* m_cene;
+    //graphicsScene* m_cene;
     QWidget* m_centralWidget;
 
 private:
@@ -98,10 +99,11 @@ private:
     double m_zoomStep;
 
 private:
-    QMenu *m_mainMenu;
-    QToolBar *m_toolBar;
-    QAction *m_playAction;
-    QAction *m_solveAction;
-    QAction *m_exitAction;
+    QMenu* m_mainMenu;
+    QToolBar* m_toolBar;
+    QAction* m_playAction;
+    QAction* m_solveAction;
+    QAction* m_exitAction;
+    QAction* m_3dPloter;
 
 };

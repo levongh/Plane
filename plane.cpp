@@ -28,11 +28,9 @@ void Plane::set2DPos(QPointF pos)
 {
     _x = pos.x();
     _y = pos.y();
-    setPos(pos);
 }
 
 QPointF Plane::get2DPos() const
 {
-    return scenePos();
     return QPointF(_x, _y);
 }

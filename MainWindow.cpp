@@ -12,7 +12,7 @@
 #include <QToolBar>
 
 #include "MainWindow.h"
-#include "graphicsScene.h"
+#include "twodimentionalscene.h"
 
 
 
@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     , m_zoomFactor(1)
     , m_zoomStep(1.1)
 {
-    m_scene = new graphicsScene;
+    m_scene = new TwoDimentionalScene;
     m_mainLayout = new QVBoxLayout;
 
     m_centralWidget = new QWidget;
@@ -222,6 +222,8 @@ void MainWindow::createMenus()
     m_toolBar->addAction(m_solveAction);
     m_toolBar->addAction(m_exitAction);
     //add tool bar to main window
+
+    m_toolBar->addAction(m_3dPloter);
     addToolBar(m_toolBar);
 }
 
@@ -233,6 +235,9 @@ void MainWindow::createActions()
     //mainToolBar->addAction(m_playAction);
     m_solveAction = new QAction(QIcon(":/images/solve.png"), tr("&Solve"), this);
     connect(m_solveAction, SIGNAL(triggered(bool)), this, SLOT(solveProblem()));
+
+    m_3dPloter = new QAction(QIcon(":/images/3d.png"), tr("3D Window") /* this ? */);
+    connect(m_3dPloter, SIGNAL(triggered(bool)), this, SLOT(on3DPloterGetting()));
 
     m_exitAction = new QAction(QIcon(":/images/exit.png"), tr("&Exit"), this);
     connect(m_exitAction, SIGNAL(triggered(bool)), qApp, SLOT(quit()));
